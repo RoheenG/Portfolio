@@ -31,10 +31,11 @@ a, .btn{
 
 nav,
 .nav-links{
-    display:flex;
-}
-
-nav {
+    display: flex;
+    gap: 2rem;
+    min-width: 0;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     justify-content: space-around;
     align-items: center;
     height: 17vh;
@@ -76,11 +77,11 @@ a:hover {
 .hamburger-menu {
     position: relative;
     display: inline-block;
-}
-
-.hamburger-icon {
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    margin-top: 0;
+    width: auto;
     justify-content: space-between;
     height: 24px;
     width: 30px;
@@ -338,6 +339,81 @@ article .icon {
 }
 
 /* PROJECTS */
+/* Carousel tracker dots */
+.carousel-tracker {
+        margin: 1.2rem auto 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+}
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background 0.3s;
+    border: 2px solid #eee;
+}
+.carousel-dot.active {
+    background: #333;
+    border-color: #333;
+}
+/* Carousel wrapper for arrows */
+.projects-carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.scroll-btn {
+    background: linear-gradient(135deg, #f5f5f5 60%, #e0e0e0 100%);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.2s, box-shadow 0.2s;
+    border: 1.5px solid #ddd;
+    outline: none;
+}
+.scroll-btn:hover {
+    background: linear-gradient(135deg, #e0e0e0 60%, #f5f5f5 100%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    border-color: #bbb;
+}
+.chevron {
+    font-size: 2.1rem;
+    color: #333;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.scroll-btn:hover .chevron {
+    color: #0077ff;
+}
 
 #projects {
     position: relative;
@@ -412,4 +488,65 @@ footer {
 
 footer p {
     text-align: center;
+}
+
+.projects-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    min-width: 0;
+    justify-content: center;
+    margin: 0 auto;
+    /* Add for smooth transition of cards */
+}
+
+.carousel-track .details-container {
+    transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.4s;
+    opacity: 1;
+    visibility: visible;
+}
+
+    .projects-scroll .carousel-track .details-container {
+    min-width: 300px;
+    max-width: 300px;
+    flex: 0 0 300px;
+    box-sizing: border-box;
+    }
+
+    @media screen and (max-width: 1000px) {
+    .projects-scroll {
+        max-width: 95vw;
+    }
+    .projects-scroll .carousel-track .details-container {
+        min-width: 80vw;
+        max-width: 80vw;
+        flex: 0 0 80vw;
+    }
+    }
+
+.projects-scroll .about-containers {
+  display: inline-flex;
+  gap: 2rem;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb {
+  background: rgb(163,163,163);
+  border-radius: 10px;
 }
